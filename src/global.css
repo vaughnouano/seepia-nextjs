@@ -1,0 +1,44 @@
+:root {
+  /* ---- Brand / Primary ---- */
+  /* gradient */
+  --color-primary: #ef6890;
+  --color-primary--to-dark: #893c53;
+
+  --color-primary-hover: #c93f78; /* to set */
+  --color-primary-light: #fcf0f4;
+
+  /* ---- Backgrounds ---- */
+  /* gradient */
+  --color-bg: #fcf0f4;
+  --color-bg--to-dark: #ffd5e2;
+
+  --color-bg-alt: #ffffff;
+
+  /* ---- Text ---- */
+  --color-text: #1b1b1b; /* primary body text */
+  --color-text-muted: #8a6b76; /* to set */
+  --color-text-on-primary: var(
+    --color-bg
+  ); /* on top of --color-primary buttons */
+
+  /* ---- Borders / Dividers ---- */
+  --color-border: #fadae5;
+
+  /* ---- Status (useful for booking states) TO BE SET ---- */
+  --color-success: #4caf6d; /* approved */
+  --color-warning: #e0a73e; /* pending */
+  --color-danger: #d64545; /* declined / delete actions */
+
+  /* ---- Spacing scale (bonus — same idea applies) ---- */
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* ---- Radius (your UI has very rounded buttons/cards) ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 999px;
+}
