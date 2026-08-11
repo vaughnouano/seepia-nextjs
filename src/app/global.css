@@ -1,0 +1,163 @@
+/* RESET */
+/* 1. Better box-sizing (includes pseudo-elements) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Allow percentage-based heights in the app */
+html,
+body {
+  height: 100%;
+}
+
+/* 4. Improve text rendering and set a solid baseline */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 5. Make media elements responsive and block-level */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form elements (prevents browser defaults) */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Prevent text overflow from breaking layouts */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Remove default list bullets/numbers */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 9. Reset link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 10. Optional: Remove default button border/background */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================================ 
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  ================================ */
+
+:root {
+  /* ================================ 
+                COLOR
+     ================================ */
+  /* ---- Brand / Primary ---- */
+  /* gradient */
+  --color-primary: #ef6890;
+  --color-primary-to-dark: #bf5373;
+  --color-primary-light: #fadae5;
+
+  --color-primary-hover: #c93f78; /* to set */
+  --color-primary-light: #fcf0f4;
+
+  /* ---- Backgrounds ---- */
+  /* gradient */
+  --color-bg: #fcf0f4;
+  --color-bg-to-dark: #ffd5e2;
+
+  --color-bg-alt: #ffffff;
+
+  /* ---- Text ---- */
+  --color-text: #1b1b1b; /* primary body text */
+  --color-text-muted: #8a6b76; /* to set */
+  --color-text-on-primary: var(
+    --color-bg
+  ); /* on top of --color-primary buttons */
+
+  /* ---- Borders / Dividers ---- */
+  --color-border-primary-light: var(--color-primary-light);
+  --color-border-primary: var(--color-primary);
+  --color-border-primary-to-dark: #893c53;
+
+  /* ---- Status (useful for booking states) TO BE SET ---- */
+  --color-success: #4caf6d; /* approved */
+  --color-warning: #e0a73e; /* pending */
+  --color-danger: #d64545; /* declined / delete actions */
+
+  /* ---- Spacing scale (bonus — same idea applies) ---- */
+  --space-xxxs: 6px;
+  --space-xxs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+  --space-xxl: 48px;
+
+  /* ---- Radius (your UI has very rounded buttons/cards) ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 999px;
+
+  /* ================================ 
+                TYPOGRAPHY
+     ================================ */
+  --font-size-sm: 0.875em; /* 14px */
+  --line-height-sm: 1.25rem; /* 20px */
+
+  --font-size-md: 1em; /* 16px */
+  --font-size-lg: 1.5em; /* 24px */
+  --font-size-xl: 2em; /* 32px */
+
+  --font-weight-regular: 400;
+  --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
+}
+
+body {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 16px;
+}
