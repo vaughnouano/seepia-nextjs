@@ -1,4 +1,4 @@
-.btn {
+.btn-active {
   all: unset;
   display: flex;
   justify-content: center;
@@ -26,6 +26,23 @@
         var(--color-border-primary-to-dark) 100%
       )
       border-box;
+}
+.btn-inactive {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-text-on-secondary);
+
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-text-on-secondary);
+  box-shadow: 3px 6px 0 var(--color-primary);
+
+  background: var(--color-background);
+}
+.text-inactive {
+  font-weight: var(--font-weight-regular);
 }
 
 /* ======================

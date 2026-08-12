@@ -5,15 +5,20 @@ import PesoSign from "../../icons/PesoSign";
 
 export default function Button({
   children,
-  variant = "action",
   icon,
   price = 0,
+  variant = "action",
+  visualState = "active",
 }) {
   return (
     <>
-      <button className={`${styles.btn}  ${styles[variant]}`}>
+      <button className={`${styles[`btn-${visualState}`]}  ${styles[variant]}`}>
         {/* action */}
-        <div className={styles[`text-${variant}`]}>{children}</div>
+        <div
+          className={`${styles[`text-${visualState}`]} ${styles[`text-${variant}`]}`}
+        >
+          {children}
+        </div>
         {icon}
 
         {/* PriceAction */}

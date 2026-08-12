@@ -115,6 +115,7 @@ button {
   --color-text-on-primary: var(
     --color-bg
   ); /* on top of --color-primary buttons */
+  --color-text-on-secondary: #99435c;
 
   /* ---- Borders / Dividers ---- */
   --color-border-primary-light: var(--color-primary-light);

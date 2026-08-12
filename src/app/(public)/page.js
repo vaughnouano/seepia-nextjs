@@ -9,7 +9,7 @@ import PaperPlane from "../../components/icons/PaperPlane";
 export default function Home() {
   return (
     <>
-      <Button variant="action" icon={<HeartIcon />}>
+      <Button variant="action" icon={<HeartIcon />} visualState="inactive">
         BOOK
       </Button>
       <br />
@@ -19,6 +19,7 @@ export default function Home() {
       <br />
       <span>
         <Button variant="nav" icon={<PreviousArrowIcon />}></Button>
+        <br />
         <Button variant="nav" icon={<NextArrowIcon />}></Button>
       </span>
       <br />
@@ -27,7 +28,15 @@ export default function Home() {
       </Button>
       <br />
       <Button variant="selector-wrap">1-2 day</Button>
-      <Button variant="selector-fill">Delivery</Button>
+      <br />
+      <Button variant="selector-fill" visualState="active">
+        Delivery
+      </Button>
+      <br />
+      <Button variant="selector-fill" visualState="inactive">
+        Pickup
+      </Button>
+      <br />
     </>
   );
 }
