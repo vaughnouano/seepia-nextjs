@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+
+  justify-content: "center";
+}
+.icon {
+  display: block;
+}
+
+/* ==================
+   Fill / Wrap
+   ==================*/
+.fill {
+  width: 100%;
+  padding: var(--space-sm);
+}
+.wrap {
+  padding: var(--space-xs);
+}

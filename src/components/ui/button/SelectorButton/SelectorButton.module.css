@@ -1,0 +1,12 @@
+.button {
+  text-align: center;
+  padding: var(--space-xxxxs);
+}
+
+.fill {
+  width: 100%;
+}
+
+.wrap {
+  padding-inline: var(--space-xs);
+}

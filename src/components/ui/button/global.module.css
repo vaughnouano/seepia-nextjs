@@ -1,0 +1,93 @@
+/* ==================
+   Default Styles
+   ==================*/
+.active {
+  all: unset;
+
+  color: var(--color-text-on-primary);
+  font-weight: var(--font-weight-regular);
+
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  box-shadow: 3px 6px 0 #803d50;
+
+  background: var(--color-primary);
+  background:
+    /* background */
+    linear-gradient(
+        180deg,
+        var(--color-primary) 0%,
+        var(--color-primary-to-dark) 100%
+      )
+      padding-box,
+    /* border */
+    linear-gradient(
+        0deg,
+        var(--color-primary) 00%,
+        var(--color-border-primary-to-dark) 100%
+      )
+      border-box;
+
+  transition: var(--transition);
+}
+
+.inactive {
+  all: unset;
+
+  color: var(--color-primary);
+
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-primary);
+  box-shadow: 3px 6px 0 var(--color-primary);
+
+  background: var(--color-bg-alt);
+
+  transition: var(--transition);
+}
+.inactive p {
+  font-weight: var(--font-weight-regular);
+}
+
+.disabled {
+  all: unset;
+
+  color: var(--color-text-on-primary);
+  font-weight: var(--font-weight-regular);
+
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  box-shadow: 3px 6px 0 #803d50;
+
+  background: var(--color-primary);
+  background:
+    /* background */
+    linear-gradient(
+        180deg,
+        var(--color-primary) 0%,
+        var(--color-primary-to-dark) 100%
+      )
+      padding-box,
+    /* border */
+    linear-gradient(
+        0deg,
+        var(--color-primary) 00%,
+        var(--color-border-primary-to-dark) 100%
+      )
+      border-box;
+
+  transition: var(--transition);
+  filter: grayscale(90%);
+}
+
+/* ==================
+   Animation
+   ==================*/
+.active:hover,
+.inactive:hover {
+  cursor: pointer;
+}
+.active:active,
+.inactive:active {
+  box-shadow: 0px 0px 0 #803d50;
+  transform: translate(3px, 6px);
+}
