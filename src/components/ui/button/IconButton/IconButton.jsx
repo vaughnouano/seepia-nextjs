@@ -9,9 +9,11 @@ export default function IconButton({
   iconContent,
   buttonState = "active",
   fill = false,
+  onClick,
 }) {
   return (
     <button
+      onClick={onClick}
       className={`${button[buttonState]} ${styles.button} ${fill ? styles.fill : styles.wrap}`}
     >
       {iconContent}
