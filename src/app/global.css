@@ -170,8 +170,9 @@ body {
 }
 
 /* ========================================================= */
-.selector_button_container {
+.card {
+  background-color: rgb(106, 106, 106);
   display: flex;
   gap: 8px;
-  padding-inline: 12px;
+  padding: 12px;
 }
