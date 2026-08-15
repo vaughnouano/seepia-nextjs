@@ -1,0 +1,24 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+
+  justify-content: "center";
+}
+.text {
+  line-height: 1;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ==================
+   Fill / Wrap
+   ==================*/
+.fill {
+  width: 100%;
+  padding: var(--space-xs) var(--space-xxl);
+}
+.wrap {
+  padding: var(--space-xs) var(--space-xxl);
+}
