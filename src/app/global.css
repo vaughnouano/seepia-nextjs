@@ -119,7 +119,7 @@ button {
 
   /* ---- Borders / Dividers ---- */
   --color-border-primary-light: var(--color-primary-light);
-  --color-border-primary: var(--color-primary);
+  --color-border-primary: var(--color-text-on-secondary);
   --color-border-primary-to-dark: #893c53;
 
   /* ---- Status (useful for booking states) TO BE SET ---- */
@@ -128,6 +128,7 @@ button {
   --color-danger: #d64545; /* declined / delete actions */
 
   /* ---- Spacing scale (bonus — same idea applies) ---- */
+  --space-xxxxs: 4px;
   --space-xxxs: 6px;
   --space-xxs: 8px;
   --space-xs: 12px;
@@ -146,9 +147,9 @@ button {
   /* ================================ 
                 TYPOGRAPHY
      ================================ */
-  --font-size-sm: 0.875em; /* 14px */
-  --line-height-sm: 1.25rem; /* 20px */
+  --line-height-sm: 20px; /* 20px */
 
+  --font-size-sm: 0.875em; /* 14px */
   --font-size-md: 1em; /* 16px */
   --font-size-lg: 1.5em; /* 24px */
   --font-size-xl: 2em; /* 32px */
@@ -156,9 +157,21 @@ button {
   --font-weight-regular: 400;
   --font-weight-semiBold: 600;
   --font-weight-bold: 700;
+
+  /* ================================ 
+              TYPOGRAPHY
+   ================================ */
+  --transition: 60ms;
 }
 
 body {
   font-family: var(--font-poppins), sans-serif;
   font-size: 16px;
+}
+
+/* ========================================================= */
+.selector_button_container {
+  display: flex;
+  gap: 8px;
+  padding-inline: 12px;
 }
