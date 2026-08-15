@@ -1,0 +1,28 @@
+/* calendarDay.module.css — bare structure only, no colors yet */
+.day {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.empty {
+  cursor: default;
+}
+
+.unavailable {
+  cursor: not-allowed;
+}
+
+/* .available {
+} */
+
+/* .today {
+} */
+
+/* .selected {
+} */
