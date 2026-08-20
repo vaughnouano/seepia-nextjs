@@ -100,7 +100,6 @@ button {
   --color-primary-light: #fadae5;
 
   --color-primary-hover: #c93f78; /* to set */
-  --color-primary-light: #fcf0f4;
 
   /* ---- Backgrounds ---- */
   /* gradient */
@@ -154,6 +153,7 @@ button {
   --font-size-lg: 1.5em; /* 24px */
   --font-size-xl: 2em; /* 32px */
 
+  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-semiBold: 600;
   --font-weight-bold: 700;
@@ -167,12 +167,27 @@ button {
 body {
   font-family: var(--font-poppins), sans-serif;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fcf0f4;
+  background: linear-gradient(
+    319deg,
+    rgba(252, 240, 244, 1) 0%,
+    rgba(250, 218, 229, 1) 100%
+  );
 }
 
 /* ========================================================= */
 .card {
-  background-color: rgb(106, 106, 106);
+  background-color: var(--color-bg-alt);
   display: flex;
-  gap: 8px;
-  padding: 12px;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs);
+  border-radius: 32px;
+  width: 100%;
+  height: auto;
+  max-width: 1058px;
 }
