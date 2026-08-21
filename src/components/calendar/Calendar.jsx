@@ -73,45 +73,52 @@ export default function Calendar({
   }
 
   return (
-    <div className={styles.calendar}>
-      <div className={styles.header}>
-        <div>
-          <h2 className={styles.month}>{MONTH_NAMES[viewMonth]}</h2>
-          <p className={styles.year}>{viewYear}</p>
-        </div>
+    <div className={styles.card}>
+      <div className={styles.calendar}>
+        <div className={styles.header}>
+          <div>
+            <h2 className={styles.month}>{MONTH_NAMES[viewMonth]}</h2>
+            <p className={styles.year}>{viewYear}</p>
+          </div>
 
-        <div className={styles.navButtons}>
-          <IconButton
-            iconContent={<PreviousArrowIcon />}
-            onClick={goToPreviousMonth}
-          />
-          <IconButton iconContent={<NextArrowIcon />} onClick={goToNextMonth} />
-        </div>
-      </div>
-
-      <div className={styles.weekdayRow}>
-        {WEEKDAY_LABELS.map((label) => (
-          <span key={label} className={styles.weekdayLabel}>
-            {label}
-          </span>
-        ))}
-      </div>
-
-      <div className={styles.grid}>
-        {cells.map((day, index) => {
-          if (day === null) {
-            return <CalendarDay key={`empty-${index}`} state="empty" />;
-          }
-          const dateKey = formatDateKey(viewYear, viewMonth, day);
-          return (
-            <CalendarDay
-              key={dateKey}
-              day={day}
-              state={getDayState(day)}
-              onClick={() => onSelectDate?.(dateKey)}
+          <div className={styles.navButtons}>
+            <IconButton
+              iconContent={<PreviousArrowIcon />}
+              onClick={goToPreviousMonth}
             />
-          );
-        })}
+            <IconButton
+              iconContent={<NextArrowIcon />}
+              onClick={goToNextMonth}
+            />
+          </div>
+        </div>
+
+        <div className={styles.weekdayRow}>
+          {WEEKDAY_LABELS.map((label) => (
+            <span key={label} className={styles.weekdayLabel}>
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.grid_container}>
+          <div className={styles.grid}>
+            {cells.map((day, index) => {
+              if (day === null) {
+                return <CalendarDay key={`empty-${index}`} state="empty" />;
+              }
+              const dateKey = formatDateKey(viewYear, viewMonth, day);
+              return (
+                <CalendarDay
+                  key={dateKey}
+                  day={day}
+                  state={getDayState(day)}
+                  onClick={() => onSelectDate?.(dateKey)}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
