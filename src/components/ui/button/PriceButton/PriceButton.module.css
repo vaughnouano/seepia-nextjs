@@ -40,7 +40,7 @@
    ==================*/
 .fill {
   width: 100%;
-  padding: var(--space-xs) var(--space-lg);
+  padding: var(--space-sm) var(--space-lg);
 }
 .wrap {
   padding: var(--space-xs) var(--space-lg);
