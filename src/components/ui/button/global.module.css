@@ -34,7 +34,7 @@
 .inactive {
   all: unset;
 
-  color: var(--color-primary);
+  color: var(--color-text-on-secondary);
 
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-primary);
@@ -90,4 +90,12 @@
 .inactive:active {
   box-shadow: 0px 0px 0 #803d50;
   transform: translate(3px, 6px);
+}
+
+/* ==================
+   Accessibility
+   ==================*/
+.active:focus,
+.inactive:focus {
+  border: 3px solid var(--color-border-primary-to-dark);
 }
