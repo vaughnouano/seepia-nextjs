@@ -1,0 +1,16 @@
+export default function HomeIcon() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.22602 25.1074H11.5667V16.9H20.4334V25.1074H23.774V13.4464L16 7.61603L8.22602 13.4464V25.1074ZM4.69269 28.6407V11.6797L16 3.1897L27.3074 11.6734V28.6407H17.1827V20.1507H14.8174V28.6407H4.69269Z"
+        fill="#FAF2F5"
+      />
+    </svg>
+  );
+}
