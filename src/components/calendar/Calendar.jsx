@@ -5,12 +5,7 @@ import PreviousArrowIcon from "../../components/icons/PreviousArrowIcon";
 import NextArrowIcon from "../../components/icons/NextArrowIcon";
 import IconButton from "../../components/ui/button/IconButton/IconButton";
 import CalendarDay from "../../components/ui/calendarDay/CalendarDay";
-import {
-  getMonthGrid,
-  formatDateKey,
-  getUnavailableDates,
-} from "../../lib/calendarHelpers";
-import { mockBookings } from "../../lib/mockBooking";
+import { getMonthGrid, formatDateKey } from "../../lib/calendarHelpers";
 import styles from "./Calendar.module.css";
 
 const WEEKDAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -31,15 +26,18 @@ const MONTH_NAMES = [
 
 export default function Calendar({
   cameraId,
+  unavailableDates = new Set(),
   selectedDates = [],
   onSelectDate,
+  getHoverState,
+  onHoverDate,
+  onHoverEnd,
 }) {
   const today = new Date();
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
 
   const cells = getMonthGrid(viewYear, viewMonth);
-  const unavailableDates = getUnavailableDates(mockBookings, cameraId);
   const todayKey = formatDateKey(
     today.getFullYear(),
     today.getMonth(),
@@ -68,6 +66,11 @@ export default function Calendar({
     const dateKey = formatDateKey(viewYear, viewMonth, day);
     if (unavailableDates.has(dateKey)) return "unavailable";
     if (selectedDates.includes(dateKey)) return "selected";
+
+    const hover = getHoverState?.(dateKey);
+    if (hover === "required") return "hoverRequired";
+    if (hover === "optional") return "hoverOptional";
+
     if (dateKey === todayKey) return "today";
     return "available";
   }
@@ -102,7 +105,7 @@ export default function Calendar({
         </div>
 
         <div className={styles.grid_container}>
-          <div className={styles.grid}>
+          <div className={styles.grid} onMouseLeave={() => onHoverEnd?.()}>
             {cells.map((day, index) => {
               if (day === null) {
                 return <CalendarDay key={`empty-${index}`} state="empty" />;
@@ -114,6 +117,7 @@ export default function Calendar({
                   day={day}
                   state={getDayState(day)}
                   onClick={() => onSelectDate?.(dateKey)}
+                  onMouseEnter={() => onHoverDate?.(dateKey)}
                 />
               );
             })}
