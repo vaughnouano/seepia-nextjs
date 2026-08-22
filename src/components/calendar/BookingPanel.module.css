@@ -1,6 +1,6 @@
 .image {
   height: auto;
-  width: auto;
+  max-width: 350px;
 }
 
 .card {
@@ -80,6 +80,8 @@
   font-weight: var(--font-weight-light);
   padding-right: var(--space-lg);
   background-color: #ffffff;
+  cursor: default;
+  -webkit-user-select: none;
 }
 
 .controls_container {
@@ -90,4 +92,8 @@
   display: flex;
   gap: 12px;
   width: 100%;
+}
+
+.chevronButton {
+  cursor: pointer;
 }
