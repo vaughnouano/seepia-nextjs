@@ -7,9 +7,17 @@ const STATE_CLASS = {
   available: styles.available,
   today: styles.today,
   selected: styles.selected,
+  hoverRequired: styles.hoverRequired,
+  hoverOptional: styles.hoverOptional,
 };
 
-export default function CalendarDay({ day, state = "available", onClick }) {
+export default function CalendarDay({
+  day,
+  state = "available",
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}) {
   if (state === "empty") {
     return <div className={`${styles.day} ${styles.empty}`} />;
   }
@@ -19,6 +27,8 @@ export default function CalendarDay({ day, state = "available", onClick }) {
       type="button"
       className={`${styles.day} ${STATE_CLASS[state] ?? styles.available}`}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       disabled={state === "unavailable"}
     >
       {day}
