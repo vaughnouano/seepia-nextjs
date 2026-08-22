@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# Mock Data
+src/lib/
+
 # next.js
 /.next/
 /out/
