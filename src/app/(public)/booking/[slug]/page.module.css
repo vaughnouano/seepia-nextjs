@@ -1,0 +1,178 @@
+/* page.module.css — bare structure only, style freely */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  gap: var(--space-lg);
+  background-color: white;
+}
+
+.Form {
+  display: flex;
+  width: 1030px;
+}
+
+.backButton {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: fit-content;
+}
+
+.formLayout {
+  display: flex;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ===== Left panel ===== */
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  flex: 1 1 480px;
+  min-width: 320px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.fieldRow {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.fieldRow > * {
+  flex: 1;
+}
+
+.toggleRow {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.helperText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.warningText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-danger);
+}
+
+.subPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border: 2px solid var(--color-border-primary-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.uploadRow {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.uploadRow > * {
+  flex: 1;
+}
+
+/* ===== Right panel ===== */
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1 1 320px;
+  max-width: 400px;
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border: 2px solid var(--color-border-primary-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.cameraName {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.forMonth {
+  font-size: var(--font-size-md);
+}
+
+.dateChips {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.dateChip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: var(--space-xxs) var(--space-sm);
+  border: 2px solid var(--color-border-primary-light);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.priceBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+.agreementCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.agreementList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  padding-left: var(--space-md);
+}
+
+.decorativeImage {
+  width: 100%;
+  min-height: 200px;
+  /* image will be placed here manually — left empty on purpose */
+}
+
+.termsRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
