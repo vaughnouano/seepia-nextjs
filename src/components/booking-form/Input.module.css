@@ -15,14 +15,16 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: var(--font-size-lg);
+  font-size: 20px;
   font-weight: var(--font-weight-medium);
   line-height: 1;
   color: var(--color-border-primary);
-  padding: var(--space-xxs) var(--space-md);
+  width: 100%;
+  /* padding: var(--space-xxs) var(--space-md); */
 }
 .input {
   font-weight: var(--font-weight-regular);
+  width: 100%;
 }
 
 .input:focus {
