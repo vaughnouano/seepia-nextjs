@@ -230,232 +230,248 @@ export default function BookingPage({ params }) {
                 required
               />
 
-              <div className={Styles.toggleRow}>
-                <SelectorButton
-                  textContent="Delivery"
-                  buttonState={
-                    formData.fulfillment_type === "delivery"
-                      ? "active"
-                      : "inactive"
-                  }
-                  fill={true}
-                  onClick={() =>
-                    handleFieldChange("fulfillment_type", "delivery")
-                  }
-                />
-                <SelectorButton
-                  textContent="Pickup"
-                  buttonState={
-                    formData.fulfillment_type === "pickup"
-                      ? "active"
-                      : "inactive"
-                  }
-                  fill={true}
-                  onClick={() =>
-                    handleFieldChange("fulfillment_type", "pickup")
-                  }
-                />
-              </div>
+              <div className={Styles.DeliveryDetailsContainer}>
+                <div className={Styles.toggleRow}>
+                  <SelectorButton
+                    textContent="Delivery"
+                    buttonState={
+                      formData.fulfillment_type === "delivery"
+                        ? "active"
+                        : "inactive"
+                    }
+                    fill={true}
+                    onClick={() =>
+                      handleFieldChange("fulfillment_type", "delivery")
+                    }
+                  />
+                  <SelectorButton
+                    textContent="Pickup"
+                    buttonState={
+                      formData.fulfillment_type === "pickup"
+                        ? "active"
+                        : "inactive"
+                    }
+                    fill={true}
+                    onClick={() =>
+                      handleFieldChange("fulfillment_type", "pickup")
+                    }
+                  />
+                </div>
 
-              {formData.fulfillment_type === "delivery" ? (
-                <>
+                {formData.fulfillment_type === "delivery" ? (
+                  <>
+                    <Input
+                      type="text"
+                      id="delivery_address"
+                      label="Delivery address: *"
+                      value={formData.delivery_address}
+                      onChange={(value) =>
+                        handleFieldChange("delivery_address", value)
+                      }
+                      required
+                    />
+                    <p className={Styles.helperText}>
+                      should be visible on maxim, angkas, etc.
+                    </p>
+                  </>
+                ) : (
                   <Input
-                    type="text"
-                    id="delivery_address"
-                    label="Delivery address: *"
-                    value={formData.delivery_address}
+                    type="checkbox"
+                    id="will_pickup_mandaue"
+                    label="Will you pick it up in Mandaue? *"
+                    checked={formData.will_pickup_mandaue}
                     onChange={(value) =>
-                      handleFieldChange("delivery_address", value)
+                      handleFieldChange("will_pickup_mandaue", value)
+                    }
+                  />
+                )}
+
+                <div className={Styles.subPanel}>
+                  <Input
+                    type="time"
+                    id="preferred_time"
+                    label={
+                      formData.fulfillment_type === "delivery"
+                        ? "Preferred Delivery time: *"
+                        : "Preferred Pickup time: *"
+                    }
+                    value={formData.preferred_time}
+                    onChange={(value) =>
+                      handleFieldChange("preferred_time", value)
                     }
                     required
                   />
+
+                  <Input
+                    type="time"
+                    id="return_time"
+                    label="Return time"
+                    value={formData.return_time}
+                    onChange={(value) =>
+                      handleFieldChange("return_time", value)
+                    }
+                    required
+                  />
+
                   <p className={Styles.helperText}>
-                    should be visible on maxim, angkas, etc.
+                    Rentals are based on 24 hour period
+                    <br />• Late returns incur <strong>100php per hour</strong>
                   </p>
-                </>
-              ) : (
+
+                  <Input
+                    type="radio"
+                    id="returning_method"
+                    label="Returing of Camera: *"
+                    value={formData.returning_method}
+                    onChange={(value) =>
+                      handleFieldChange("returning_method", value)
+                    }
+                    options={RETURNING_METHODS}
+                    required
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section className={Styles.section}>
+              <div className={Styles.SocialsContainer}>
+                <h2 className={Styles.sectionTitle}>Socials</h2>
+                <p className={Styles.helperText}>At least 2 required</p>
+
                 <Input
-                  type="checkbox"
-                  id="will_pickup_mandaue"
-                  label="Will you pick it up in Mandaue? *"
-                  checked={formData.will_pickup_mandaue}
+                  type="url"
+                  id="facebook_url"
+                  label="Facebook"
+                  value={formData.facebook_url}
+                  onChange={(value) => handleFieldChange("facebook_url", value)}
+                />
+
+                <Input
+                  type="url"
+                  id="instagram_url"
+                  label="Instagram"
+                  value={formData.instagram_url}
                   onChange={(value) =>
-                    handleFieldChange("will_pickup_mandaue", value)
+                    handleFieldChange("instagram_url", value)
                   }
                 />
-              )}
 
-              <div className={Styles.subPanel}>
                 <Input
-                  type="time"
-                  id="preferred_time"
-                  label={
-                    formData.fulfillment_type === "delivery"
-                      ? "Preferred Delivery time: *"
-                      : "Preferred Pickup time: *"
-                  }
-                  value={formData.preferred_time}
+                  type="url"
+                  id="tiktok_url"
+                  label="Tiktok"
+                  value={formData.tiktok_url}
+                  onChange={(value) => handleFieldChange("tiktok_url", value)}
+                />
+
+                {!hasEnoughSocials && (
+                  <p className={Styles.warningText}>
+                    Please fill in at least 2 of the 3 links above.
+                  </p>
+                )}
+              </div>
+            </section>
+
+            <section className={Styles.section}>
+              <div className={Styles.RentingPurposeContainer}>
+                <h2 className={Styles.sectionTitle}>I'm renting for:</h2>
+
+                <Input
+                  type="radio"
+                  id="renting_purpose"
+                  value={formData.renting_purpose}
                   onChange={(value) =>
-                    handleFieldChange("preferred_time", value)
+                    handleFieldChange("renting_purpose", value)
                   }
-                  required
+                  options={[
+                    ...RENTING_PURPOSES,
+                    { value: "other", label: "Other Special Occasions:" },
+                  ]}
                 />
 
-                <Input
-                  type="time"
-                  id="return_time"
-                  label="Return time"
-                  value={formData.return_time}
-                  onChange={(value) => handleFieldChange("return_time", value)}
-                  required
-                />
+                {formData.renting_purpose === "other" && (
+                  <Input
+                    type="text"
+                    id="renting_purpose_other"
+                    value={formData.renting_purpose_other}
+                    onChange={(value) =>
+                      handleFieldChange("renting_purpose_other", value)
+                    }
+                  />
+                )}
+              </div>
+            </section>
 
+            <section className={Styles.section}>
+              <div className={Styles.SharePhotosContainer}>
+                <h2 className={Styles.sectionTitle}>For our IG</h2>
                 <p className={Styles.helperText}>
-                  Rentals are based on 24 hour period
-                  <br />• Late returns incur <strong>100php per hour</strong>
+                  Would you allow us to share your photos/videos on our page and
+                  social media?
                 </p>
 
                 <Input
                   type="radio"
-                  id="returning_method"
-                  label="Returing of Camera: *"
-                  value={formData.returning_method}
+                  id="allow_social_share"
+                  value={formData.allow_social_share}
                   onChange={(value) =>
-                    handleFieldChange("returning_method", value)
+                    handleFieldChange("allow_social_share", value)
                   }
-                  options={RETURNING_METHODS}
+                  options={[
+                    { value: "yes", label: "Yes, you may share them" },
+                    { value: "no", label: "No, I prefer to keep them private" },
+                  ]}
                   required
                 />
+
+                {formData.allow_social_share === "yes" && (
+                  <p className={Styles.helperText}>
+                    Please leave the photos/videos that you want us to share on
+                    the camera upon return. We'll save them ourselves to keep
+                    the original quality.
+                  </p>
+                )}
               </div>
             </section>
 
             <section className={Styles.section}>
-              <h2 className={Styles.sectionTitle}>Socials</h2>
-              <p className={Styles.helperText}>At least 2 required</p>
-
-              <Input
-                type="url"
-                id="facebook_url"
-                label="Facebook"
-                value={formData.facebook_url}
-                onChange={(value) => handleFieldChange("facebook_url", value)}
-              />
-
-              <Input
-                type="url"
-                id="instagram_url"
-                label="Instagram"
-                value={formData.instagram_url}
-                onChange={(value) => handleFieldChange("instagram_url", value)}
-              />
-
-              <Input
-                type="url"
-                id="tiktok_url"
-                label="Tiktok"
-                value={formData.tiktok_url}
-                onChange={(value) => handleFieldChange("tiktok_url", value)}
-              />
-
-              {!hasEnoughSocials && (
-                <p className={Styles.warningText}>
-                  Please fill in at least 2 of the 3 links above.
-                </p>
-              )}
-            </section>
-
-            <section className={Styles.section}>
-              <h2 className={Styles.sectionTitle}>I'm renting for:</h2>
-
-              <Input
-                type="radio"
-                id="renting_purpose"
-                value={formData.renting_purpose}
-                onChange={(value) =>
-                  handleFieldChange("renting_purpose", value)
-                }
-                options={[
-                  ...RENTING_PURPOSES,
-                  { value: "other", label: "Other Special Occasions:" },
-                ]}
-              />
-
-              {formData.renting_purpose === "other" && (
-                <Input
-                  type="text"
-                  id="renting_purpose_other"
-                  value={formData.renting_purpose_other}
-                  onChange={(value) =>
-                    handleFieldChange("renting_purpose_other", value)
-                  }
-                />
-              )}
-            </section>
-
-            <section className={Styles.section}>
-              <h2 className={Styles.sectionTitle}>For our IG</h2>
-              <p className={Styles.helperText}>
-                Would you allow us to share your photos/videos on our page and
-                social media?
-              </p>
-
-              <Input
-                type="radio"
-                id="allow_social_share"
-                value={formData.allow_social_share}
-                onChange={(value) =>
-                  handleFieldChange("allow_social_share", value)
-                }
-                options={[
-                  { value: "yes", label: "Yes, you may share them" },
-                  { value: "no", label: "No, I prefer to keep them private" },
-                ]}
-                required
-              />
-
-              {formData.allow_social_share === "yes" && (
+              <div className={Styles.uploadContainer}>
+                <h2 className={Styles.sectionTitle}>Selfie with Valid ID</h2>
                 <p className={Styles.helperText}>
-                  Please leave the photos/videos that you want us to share on
-                  the camera upon return. We'll save them ourselves to keep the
-                  original quality.
+                  Must be (such as National ID, Passport, Driver's License). Use
+                  parents' ID if none
                 </p>
-              )}
-            </section>
 
-            <section className={Styles.section}>
-              <h2 className={Styles.sectionTitle}>Selfie with Valid ID</h2>
-              <p className={Styles.helperText}>
-                Must be (such as National ID, Passport, Driver's License). Use
-                parents' ID if none
-              </p>
-
-              <div className={Styles.uploadRow}>
-                <Input
-                  type="file"
-                  id="id_photo"
-                  label="Upload ID only"
-                  accept="image/*"
-                  onChange={(fileList) =>
-                    handleFileChange("id_photo", fileList)
-                  }
-                  required
-                />
-                <Input
-                  type="file"
-                  id="selfie_with_id"
-                  label="Upload selfie with ID"
-                  accept="image/*"
-                  onChange={(fileList) =>
-                    handleFileChange("selfie_with_id", fileList)
-                  }
-                  required
-                />
+                <div className={Styles.uploadRow}>
+                  <Input
+                    type="file"
+                    id="id_photo"
+                    label="Upload ID only"
+                    accept="image/*"
+                    onChange={(fileList) =>
+                      handleFileChange("id_photo", fileList)
+                    }
+                    required
+                  />
+                  <Input
+                    type="file"
+                    id="selfie_with_id"
+                    label="Upload selfie with ID"
+                    accept="image/*"
+                    onChange={(fileList) =>
+                      handleFileChange("selfie_with_id", fileList)
+                    }
+                    required
+                  />
+                </div>
               </div>
             </section>
 
             <section className={Styles.section}>
-              <h2 className={Styles.sectionTitle}>Signature</h2>
-              <SignaturePad onChange={setSignatureDataUrl} />
+              <div className={Styles.SignatureContainer}>
+                <h2 className={Styles.sectionTitle}>Signature</h2>
+                <SignaturePad onChange={setSignatureDataUrl} />
+              </div>
             </section>
           </div>
 
