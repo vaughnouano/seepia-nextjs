@@ -151,7 +151,8 @@ button {
   --font-size-sm: 0.875em; /* 14px */
   --font-size-md: 1em; /* 16px */
   --font-size-lg: 1.5em; /* 24px */
-  --font-size-xl: 2em; /* 32px */
+  --font-size-xl: 2rem; /* 32px */
+  --font-size-xxl: 3rem; /* 48px */
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
