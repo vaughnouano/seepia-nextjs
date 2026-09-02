@@ -32,3 +32,16 @@
   box-shadow: none !important;
   border-bottom: 2px solid var(--color-border-primary);
 }
+
+.radioLabel {
+  display: flex;
+  justify-content: left;
+  font-size: 16px;
+  color: var(--color-text-on-secondary);
+  padding: 6px 0;
+}
+.inputRadio {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}

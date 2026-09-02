@@ -37,7 +37,7 @@ export default function Input({
         {options.map((option) => (
           <label key={option.value} className={styles.radioLabel}>
             <input
-              className={styles.input}
+              className={styles.inputRadio}
               type="radio"
               name={id}
               value={option.value}
