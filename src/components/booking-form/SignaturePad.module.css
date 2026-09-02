@@ -16,6 +16,7 @@
   all: unset;
   cursor: pointer;
   color: var(--color-primary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semiBold);
   margin-top: var(--space-xxs);
 }
