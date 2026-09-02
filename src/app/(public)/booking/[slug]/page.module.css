@@ -9,11 +9,12 @@
   width: 100%;
   gap: var(--space-lg);
   background-color: white;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 .Form {
   display: flex;
-  background-color: rgb(182, 182, 182);
   width: 1030px;
 }
 
@@ -23,6 +24,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
+  font-size: var(--font-size-md);
+  color: var(--color-primary);
   width: fit-content;
 }
 
@@ -41,7 +44,7 @@
   align-items: center;
   justify-content: center;
   /* gap: var(--space-lg); */
-  border: 5px solid green;
+  /* border: 5px solid green; */
   min-width: 320px;
 }
 
@@ -54,8 +57,48 @@
 }
 
 .sectionTitle {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+
+  color: var(--color-primary);
+}
+
+.agreementTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  line-height: 1;
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.sectionMediumTitle {
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-bold);
+
+  display: flex;
+  justify-content: start;
+  gap: 16px;
+
+  color: var(--color-primary);
+}
+
+.sectionSmallTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semiBold);
+
+  display: flex;
+  justify-content: start;
+  gap: 16px;
+
+  color: var(--color-primary);
 }
 
 .fieldRow {
@@ -77,6 +120,7 @@
 .helperText {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
+  color: var(--color-primary);
 }
 
 .warningText {
@@ -108,22 +152,39 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 24px;
+}
+.inputContainer {
+  margin-inline: 12px;
 }
 
 .RentingPurposeContainer {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0);
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .SharePhotosContainer {
-  background-color: green;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .uploadContainer {
-  background-color: orange;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .SignatureContainer {
-  background-color: pink;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .uploadRow {
@@ -141,7 +202,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   width: 100%;
   max-width: 400px;
 }
@@ -193,19 +254,27 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  padding-right: var(--space-md);
+  padding-bottom: 64px;
 }
 
 .agreementList {
   display: flex;
   flex-direction: column;
+  line-height: 1;
+  color: var(--color-text-on-secondary);
   gap: var(--space-xs);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   padding-left: var(--space-md);
+
+  list-style-type: disc;
 }
 
 .decorativeImage {
   width: 100%;
   min-height: 200px;
+  cursor: pointer;
+
   /* image will be placed here manually — left empty on purpose */
 }
 
