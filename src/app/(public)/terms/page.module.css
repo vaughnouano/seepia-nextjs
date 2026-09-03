@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 200px;
+  padding-bottom: 200px;
+
+  background-color: white;
+}
+
+.termsAndCondition {
+  max-width: 720px;
+  height: 100%;
+}
+
+.formTitle {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-xxl);
+  color: var(--color-primary);
+  gap: 16px;
+  padding-bottom: 24px;
+}
+.title {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.subGroup {
+  margin-bottom: 24px;
+}
+.listItem {
+  list-style: disc;
+  margin-left: 24px;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: var(--font-weight-regular);
+}
