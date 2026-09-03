@@ -1,3 +1,9 @@
+import Styles from "./page.module.css";
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className={Styles.container}>
+      <div></div>
+    </div>
+  );
 }
