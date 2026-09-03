@@ -185,18 +185,6 @@ body {
 
 /* ========================================================= */
 
-.card {
-  background-color: var(--color-bg-alt);
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-xs);
-  border-radius: 32px;
-  width: 100%;
-  height: auto;
-  max-width: 1058px;
-}
-
 /* ========================================================= 
    Booking Page
    =========================================================*/
