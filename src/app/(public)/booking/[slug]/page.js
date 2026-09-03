@@ -97,8 +97,14 @@ export default function BookingPage({ params }) {
 
     const agreed = sessionStorage.getItem("termsAgreed") === "true";
     setTermsAgreed(agreed);
+
+    const savedFormData = sessionStorage.getItem("bookingFormData");
+    if (savedFormData) setFormData(JSON.parse(savedFormData));
   }, []);
 
+  useEffect(() => {
+    sessionStorage.setItem("bookingFormData", JSON.stringify(formData));
+  }, [formData]);
   const camera = bookingDraft
     ? getCameraBySlug(bookingDraft.camera_id)
     : getCameraBySlug(slug);
@@ -570,7 +576,7 @@ export default function BookingPage({ params }) {
 
             <TextIconButton
               textContent="Submit Form"
-              buttonState={canSubmit ? "active" : "inactive"}
+              buttonState={canSubmit ? "active" : "disabled"}
               fill={true}
               type="submit"
               disabled={!canSubmit}
