@@ -1,6 +1,6 @@
 "use client";
 
-import "../../../global.css";
+import Styles from "./page.module.css";
 import { use, useState } from "react";
 import Calendar from "../../../../components/calendar/Calendar";
 import BookingPanel from "../../../../components/calendar/BookingPanel";
@@ -201,24 +201,26 @@ export default function CalendarPage({ params }) {
   }
 
   return (
-    <main className="card">
-      <BookingPanel
-        camera={camera}
-        onPrevCamera={goToPreviousCamera}
-        onNextCamera={goToNextCamera}
-        durationTier={durationTier}
-        onSelectDurationTier={handleSelectDurationTier}
-        onBook={handleBook}
-      />
-      <Calendar
-        cameraId={camera.slug}
-        unavailableDates={unavailableDates}
-        selectedDates={selectedDates}
-        onSelectDate={handleSelectDate}
-        getHoverState={getHoverState}
-        onHoverDate={setHoveredDate}
-        onHoverEnd={() => setHoveredDate(null)}
-      />
+    <main className={Styles.container}>
+      <div className={Styles.card}>
+        <BookingPanel
+          camera={camera}
+          onPrevCamera={goToPreviousCamera}
+          onNextCamera={goToNextCamera}
+          durationTier={durationTier}
+          onSelectDurationTier={handleSelectDurationTier}
+          onBook={handleBook}
+        />
+        <Calendar
+          cameraId={camera.slug}
+          unavailableDates={unavailableDates}
+          selectedDates={selectedDates}
+          onSelectDate={handleSelectDate}
+          getHoverState={getHoverState}
+          onHoverDate={setHoveredDate}
+          onHoverEnd={() => setHoveredDate(null)}
+        />
+      </div>
     </main>
   );
 }
