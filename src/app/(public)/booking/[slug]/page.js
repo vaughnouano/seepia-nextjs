@@ -11,6 +11,8 @@ import TextIconButton from "../../../../components/ui/button/TextIconButton/Text
 import { getCameraBySlug } from "../../../../lib/camera";
 import { pricing, calculateTotalPrice } from "../../../../lib/pricing";
 import { daysBetween } from "../../../../lib/rangeSelection";
+import { supabase } from "../../../../lib/supabaseClient";
+import { uploadBookingFiles } from "../../../../lib/uploadHelper";
 import UserRoundIcon from "../../../../components/icons/UserRound";
 import PaperScrollIcon from "../../../../components/icons/PaperScroll";
 import VerticalBanner from "../../../../../public/images/vertical-brand-image.jpg";
@@ -82,7 +84,7 @@ export default function BookingPage({ params }) {
     allow_social_share: "",
   });
 
-  const age = calculateAge(formData.date_of_birth); // ✅ now safely after formData
+  const age = calculateAge(formData.date_of_birth);
 
   const [files, setFiles] = useState({
     id_photo: null,
@@ -90,6 +92,9 @@ export default function BookingPage({ params }) {
   });
 
   const [signatureDataUrl, setSignatureDataUrl] = useState("");
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("bookingDraft");
@@ -105,6 +110,7 @@ export default function BookingPage({ params }) {
   useEffect(() => {
     sessionStorage.setItem("bookingFormData", JSON.stringify(formData));
   }, [formData]);
+
   const camera = bookingDraft
     ? getCameraBySlug(bookingDraft.camera_id)
     : getCameraBySlug(slug);
@@ -151,24 +157,115 @@ export default function BookingPage({ params }) {
     files.selfie_with_id &&
     signatureDataUrl;
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    if (!canSubmit || !bookingDraft) return;
+    if (!canSubmit || !bookingDraft || isSubmitting) return;
 
-    const submission = {
-      camera_id: bookingDraft.camera_id,
-      duration_type: bookingDraft.duration_type,
-      start_date: bookingDraft.start_date,
-      end_date: bookingDraft.end_date,
-      total_price: totalPrice,
-      ...formData,
-      id_photo_file: files.id_photo,
-      selfie_with_id_file: files.selfie_with_id,
-      signature_data_url: signatureDataUrl,
-      terms_agreed: termsAgreed,
-    };
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    console.log("Booking submission ready:", submission);
+    try {
+      // ---- Server-side-safe validation (never trust client state alone) ----
+      const realAge = calculateAge(formData.date_of_birth);
+      if (realAge < 18) {
+        throw new Error("Renters must be 18 years old and above.");
+      }
+
+      const realSocialsCount = [
+        formData.facebook_url,
+        formData.instagram_url,
+        formData.tiktok_url,
+      ].filter((value) => value.trim().length > 0).length;
+      if (realSocialsCount < 2) {
+        throw new Error("At least 2 social links are required.");
+      }
+
+      const realNumberOfDays =
+        daysBetween(bookingDraft.start_date, bookingDraft.end_date) + 1;
+      const realTotalPrice = calculateTotalPrice(
+        bookingDraft.duration_type,
+        realNumberOfDays,
+      );
+
+      // ---- Upload the 3 files first — abort before inserting if any fail ----
+      const bookingFolder = crypto.randomUUID();
+      const { id_photo_url, selfie_with_id_url, signature_url } =
+        await uploadBookingFiles(bookingFolder, {
+          idPhoto: files.id_photo,
+          selfieWithId: files.selfie_with_id,
+          signatureDataUrl: signatureDataUrl,
+        });
+
+      const termsAgreedAt = sessionStorage.getItem("termsAgreedAt") || null;
+
+      // delete_after = 14 days past the rental's end date
+      const deleteAfterDate = new Date(bookingDraft.end_date);
+      deleteAfterDate.setDate(deleteAfterDate.getDate() + 14);
+
+      const { error: insertError } = await supabase.from("bookings").insert({
+        camera_id: bookingDraft.camera_id,
+        duration_type: bookingDraft.duration_type,
+        start_date: bookingDraft.start_date,
+        end_date: bookingDraft.end_date,
+        total_price: realTotalPrice,
+
+        full_name: formData.full_name,
+        date_of_birth: formData.date_of_birth,
+        age: realAge,
+        contact_no: formData.contact_no,
+        email: formData.email,
+
+        fulfillment_type: formData.fulfillment_type,
+        delivery_address:
+          formData.fulfillment_type === "delivery"
+            ? formData.delivery_address
+            : null,
+        will_pickup_mandaue:
+          formData.fulfillment_type === "pickup"
+            ? formData.will_pickup_mandaue
+            : null,
+
+        preferred_time: formData.preferred_time,
+        return_time: formData.return_time,
+        returning_method: formData.returning_method,
+
+        facebook_url: formData.facebook_url || null,
+        instagram_url: formData.instagram_url || null,
+        tiktok_url: formData.tiktok_url || null,
+
+        renting_purpose: formData.renting_purpose || null,
+        renting_purpose_other:
+          formData.renting_purpose === "other"
+            ? formData.renting_purpose_other
+            : null,
+
+        allow_social_share: formData.allow_social_share === "yes",
+
+        id_photo_url,
+        selfie_with_id_url,
+        signature_url,
+
+        terms_agreed: true,
+        terms_agreed_at: termsAgreedAt,
+
+        downpayment_status: "pending",
+        status: "pending",
+        delete_after: deleteAfterDate.toISOString().split("T")[0],
+      });
+
+      if (insertError) throw new Error(insertError.message);
+
+      sessionStorage.removeItem("bookingDraft");
+      sessionStorage.removeItem("bookingFormData");
+      sessionStorage.removeItem("termsAgreed");
+      sessionStorage.removeItem("termsAgreedAt");
+
+      router.push("/booking-confirmed");
+    } catch (error) {
+      setSubmitError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (!camera) {
@@ -565,7 +662,6 @@ export default function BookingPage({ params }) {
             </div>
 
             <div className={Styles.decorativeImage}>
-              {/* image placeholder — left empty per instructions */}
               <Image
                 src={VerticalBanner}
                 width={384}
@@ -575,12 +671,18 @@ export default function BookingPage({ params }) {
             </div>
 
             <TextIconButton
-              textContent="Submit Form"
-              buttonState={canSubmit ? "active" : "disabled"}
+              textContent={isSubmitting ? "Submitting..." : "Submit Form"}
+              buttonState={canSubmit && !isSubmitting ? "active" : "disabled"}
               fill={true}
               type="submit"
-              disabled={!canSubmit}
+              disabled={!canSubmit || isSubmitting}
             />
+
+            {submitError && (
+              <p role="alert" className={Styles.warningText}>
+                {submitError}
+              </p>
+            )}
 
             <label className={Styles.termsRow}>
               <input

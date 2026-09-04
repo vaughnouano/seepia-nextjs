@@ -1,11 +1,12 @@
 "use client";
 
 import Styles from "./page.module.css";
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Calendar from "../../../../components/calendar/Calendar";
 import BookingPanel from "../../../../components/calendar/BookingPanel";
 import { cameras } from "../../../../lib/camera";
-import { mockBookings } from "../../../../lib/mockBooking";
+import { supabase } from "../../../../lib/supabaseClient";
 import { getUnavailableDates } from "../../../../lib/calendarHelpers";
 import {
   addDays,
@@ -22,6 +23,7 @@ const DURATION_TIERS = {
 
 export default function CalendarPage({ params }) {
   const { slug } = use(params);
+  const router = useRouter();
 
   const initialIndex = Math.max(
     cameras.findIndex((camera) => camera.slug === slug),
@@ -33,9 +35,47 @@ export default function CalendarPage({ params }) {
   const [selectedRange, setSelectedRange] = useState(null);
   const [hoveredDate, setHoveredDate] = useState(null);
 
+  const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+
   const camera = cameras[cameraIndex];
   const tier = DURATION_TIERS[durationTier];
-  const unavailableDates = getUnavailableDates(mockBookings, camera.slug);
+
+  // Fetch real availability from Supabase whenever the selected camera changes.
+  // Reads only from `booking_availability` — the safe, PII-free view — never
+  // the real `bookings` table, since this runs for anonymous site visitors.
+  useEffect(() => {
+    let isCancelled = false;
+
+    async function fetchAvailability() {
+      setIsLoading(true);
+      setLoadError(null);
+
+      const { data, error } = await supabase
+        .from("booking_availability")
+        .select("camera_id, start_date, end_date, status")
+        .eq("camera_id", camera.slug);
+
+      if (isCancelled) return;
+
+      if (error) {
+        setLoadError(error.message);
+        setBookings([]);
+      } else {
+        setBookings(data ?? []);
+      }
+      setIsLoading(false);
+    }
+
+    fetchAvailability();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [camera.slug]);
+
+  const unavailableDates = getUnavailableDates(bookings, camera.slug);
 
   function resetSelection() {
     setSelectedRange(null);
@@ -190,6 +230,7 @@ export default function CalendarPage({ params }) {
     : [];
 
   function handleBook() {
+    console.log("handleBook fired"); // temporary debug line
     if (!selectedRange) return;
     const bookingDraft = {
       camera_id: camera.slug,
@@ -197,7 +238,8 @@ export default function CalendarPage({ params }) {
       start_date: selectedRange.start,
       end_date: selectedRange.end,
     };
-    console.log("Booking draft ready for form:", bookingDraft);
+    sessionStorage.setItem("bookingDraft", JSON.stringify(bookingDraft));
+    router.push(`/booking/${camera.slug}`);
   }
 
   return (
@@ -211,6 +253,9 @@ export default function CalendarPage({ params }) {
           onSelectDurationTier={handleSelectDurationTier}
           onBook={handleBook}
         />
+        {loadError && (
+          <p role="alert">Couldn't load availability: {loadError}</p>
+        )}
         <Calendar
           cameraId={camera.slug}
           unavailableDates={unavailableDates}

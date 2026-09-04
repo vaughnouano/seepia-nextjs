@@ -13,6 +13,7 @@ function TermsContent() {
 
   function handleAgree() {
     sessionStorage.setItem("termsAgreed", "true");
+    sessionStorage.setItem("termsAgreedAt", new Date().toISOString());
     router.push(returnTo);
   }
 
