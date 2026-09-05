@@ -57,6 +57,9 @@ export default function CalendarPage({ params }) {
         .select("camera_id, start_date, end_date, status")
         .eq("camera_id", camera.slug);
 
+      // console.log("RAW Supabase response — data:", data);
+      // console.log("RAW Supabase response — error:", error);
+
       if (isCancelled) return;
 
       if (error) {
@@ -70,12 +73,24 @@ export default function CalendarPage({ params }) {
 
     fetchAvailability();
 
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        fetchAvailability();
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       isCancelled = true;
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [camera.slug]);
 
   const unavailableDates = getUnavailableDates(bookings, camera.slug);
+  // console.log("bookings state:", bookings);
+  // console.log("camera.slug:", camera.slug);
+  // console.log("unavailableDates set:", Array.from(unavailableDates));
 
   function resetSelection() {
     setSelectedRange(null);

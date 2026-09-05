@@ -159,10 +159,8 @@ button {
   --font-weight-medium: 500;
   --font-weight-semiBold: 600;
   --font-weight-bold: 700;
+  --font-weight-extraBold: 800;
 
-  /* ================================ 
-              TYPOGRAPHY
-   ================================ */
   --transition: 60ms;
 }
 

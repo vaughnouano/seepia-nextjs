@@ -9,6 +9,7 @@ import ChevronRightIcon from "../../components/icons/ChevronNext";
 import HomeIcon from "../../components/icons/HomeIcon";
 
 import Image from "next/image";
+import { pricing } from "../../lib/pricing";
 
 // Keys must match lib/pricing.js and the bookings table's duration_type values
 const TIER_OPTIONS = [
@@ -25,12 +26,13 @@ export default function BookingPanel({
   onSelectDurationTier,
   onBook,
 }) {
-  if (!camera) return null; // guards against a brief render before data is ready
+  if (!camera) return null;
+
+  const pricePerDay = pricing[camera.slug]?.[durationTier];
 
   return (
     <>
       <div className={styles.card}>
-        {/* Image */}
         <div className={styles.image_container}>
           <Image
             className={styles.image}
@@ -42,7 +44,6 @@ export default function BookingPanel({
           />
         </div>
         <div className={styles.information}>
-          {/* Selectors */}
           <div className={styles.selector_container}>
             {TIER_OPTIONS.map((tier) => (
               <SelectorButton
@@ -54,7 +55,6 @@ export default function BookingPanel({
               />
             ))}
           </div>
-          {/* Description */}
           <div className={styles.description_container}>
             <div className={styles.title_container}>
               <h1 className={styles.itemTitle}>{camera.name}</h1>
@@ -76,11 +76,10 @@ export default function BookingPanel({
               </p>
             </div>
           </div>
-          {/* Book Button */}
           <div className={styles.bottomBottom_container}>
             <PriceButton
               textContent="Book"
-              priceValue={500}
+              priceValue={pricePerDay}
               fill={true}
               onClick={onBook}
             />

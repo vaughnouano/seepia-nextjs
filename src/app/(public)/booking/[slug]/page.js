@@ -2,6 +2,7 @@
 
 import Styles from "./page.module.css";
 import Image from "next/image";
+import { generateId } from "@/src/lib/generateId";
 import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Input from "../../../../components/booking-form/Input";
@@ -118,9 +119,15 @@ export default function BookingPage({ params }) {
   const numberOfDays = bookingDraft
     ? daysBetween(bookingDraft.start_date, bookingDraft.end_date) + 1
     : 0;
-  const pricePerDay = bookingDraft ? pricing[bookingDraft.duration_type] : 0;
+  const pricePerDay = bookingDraft
+    ? pricing[bookingDraft.camera_id]?.[bookingDraft.duration_type]
+    : 0;
   const totalPrice = bookingDraft
-    ? calculateTotalPrice(bookingDraft.duration_type, numberOfDays)
+    ? calculateTotalPrice(
+        bookingDraft.camera_id,
+        bookingDraft.duration_type,
+        numberOfDays,
+      )
     : 0;
 
   function handleFieldChange(field, value) {
@@ -183,12 +190,13 @@ export default function BookingPage({ params }) {
       const realNumberOfDays =
         daysBetween(bookingDraft.start_date, bookingDraft.end_date) + 1;
       const realTotalPrice = calculateTotalPrice(
+        bookingDraft.camera_id,
         bookingDraft.duration_type,
         realNumberOfDays,
       );
 
       // ---- Upload the 3 files first — abort before inserting if any fail ----
-      const bookingFolder = crypto.randomUUID();
+      const bookingFolder = generateId();
       const { id_photo_url, selfie_with_id_url, signature_url } =
         await uploadBookingFiles(bookingFolder, {
           idPhoto: files.id_photo,
@@ -608,13 +616,21 @@ export default function BookingPage({ params }) {
           {/* ================= RIGHT PANEL ================= */}
           <div className={Styles.rightPanel}>
             <div className={Styles.summaryCard}>
-              <h2 className={Styles.cameraName}>{camera.name}</h2>
               {bookingDraft && (
                 <>
-                  <p className={Styles.forMonth}>
-                    For{" "}
-                    {MONTH_NAMES[new Date(bookingDraft.start_date).getMonth()]}
-                  </p>
+                  <div className={Styles.summaryCardHeader}>
+                    <h2 className={Styles.cameraName}>{camera.name}</h2>
+                    <p className={Styles.forMonth}>
+                      For{" "}
+                      <b>
+                        {
+                          MONTH_NAMES[
+                            new Date(bookingDraft.start_date).getMonth()
+                          ]
+                        }
+                      </b>
+                    </p>
+                  </div>
                   <div className={Styles.dateChips}>
                     {Array.from({ length: numberOfDays }, (_, i) => {
                       const date = new Date(bookingDraft.start_date);
@@ -627,9 +643,15 @@ export default function BookingPage({ params }) {
                     })}
                   </div>
                   <div className={Styles.priceBox}>
-                    <span>Price</span>
+                    <span className={Styles.priceBoxTitle}>Price</span>
                     <span>
-                      ₱{totalPrice} <small>total ({pricePerDay}/day)</small>
+                      <p>
+                        <b>₱{totalPrice} </b> total
+                      </p>{" "}
+                      <div className={Styles.priceSmallText}>
+                        {" "}
+                        ({pricePerDay}/day)
+                      </div>
                     </span>
                   </div>
                 </>
@@ -662,12 +684,12 @@ export default function BookingPage({ params }) {
             </div>
 
             <div className={Styles.decorativeImage}>
-              <Image
+              {/* <Image
                 src={VerticalBanner}
                 width={384}
                 height={1542}
                 alt="vertical decorative image banner"
-              />
+              /> */}
             </div>
 
             <TextIconButton

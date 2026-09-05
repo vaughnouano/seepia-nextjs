@@ -235,19 +235,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  padding: var(--space-xxs) var(--space-sm);
-  border: 2px solid var(--color-border-primary-light);
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-primary-light);
+  /* padding: var(--space-sm) var(--space-sm); */
+  border: 2px solid var(--color-border-primary);
   border-radius: var(--radius-sm);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
+  color: var(--color-border-primary);
+  line-height: 1;
 }
 
 .priceBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) var(--space-xl);
+
+  color: var(--color-text-on-primary);
+  font-weight: var(--font-weight-regular);
+
   border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  /* box-shadow: 3px 6px 0 #803d50; */
+
+  background: var(--color-primary);
+  background:
+    /* background */
+    linear-gradient(
+        180deg,
+        var(--color-primary) 0%,
+        var(--color-primary-to-dark) 100%
+      )
+      padding-box,
+    /* border */
+    linear-gradient(
+        0deg,
+        var(--color-primary) 00%,
+        var(--color-border-primary-to-dark) 100%
+      )
+      border-box;
+
+  transition: var(--transition);
 }
 
 .agreementCard {
@@ -271,11 +301,17 @@
 }
 
 .decorativeImage {
-  width: 100%;
+  width: auto;
+  height: 100%;
   min-height: 200px;
   cursor: pointer;
-
-  /* image will be placed here manually — left empty on purpose */
+  background-image: url("/images/vertical-brand-image-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  margin-inline: 14px;
+  margin-bottom: 64px;
 }
 
 .termsRow {
@@ -284,4 +320,29 @@
   gap: var(--space-xs);
   font-size: var(--font-size-sm);
   cursor: pointer;
+}
+
+.priceBoxTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semiBold);
+  line-height: 1;
+}
+
+.priceSmallText {
+  font-size: var(--font-size-sm);
+}
+
+.summaryCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+}
+.cameraName {
+  line-height: 1;
+  font-weight: var(--font-weight-extraBold);
+  font-style: italic;
+}
+.forMonth {
+  font-size: var(--font-size-lg);
 }
