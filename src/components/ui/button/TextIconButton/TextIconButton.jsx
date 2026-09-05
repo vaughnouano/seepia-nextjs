@@ -15,7 +15,7 @@ export default function TextIconButton({
 }) {
   return (
     <button
-      className={`${button[buttonState]} ${styles.button} ${fill ? styles.wrap : styles.fill}`}
+      className={`${button[buttonState]} ${styles.button} ${fill ? styles.fill : styles.wrap}`}
     >
       <p className={styles.text}>{textContent}</p>
       <span>
