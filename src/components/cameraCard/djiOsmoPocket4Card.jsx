@@ -1,20 +1,20 @@
-import Styles from "./canonG7xMarkiiiCard.module.css";
+import Styles from "./djiOsmoPocket4MarkiiiCard.module.css";
 
-import TextIconButton from "../../components/ui/button/TextIconButton/TextIconButton";
+import TextIconButton from "../ui/button/TextIconButton/TextIconButton";
 
-import CanonG7XMarkIII from "../../../public/equipment-mock/canon_g7x_top.png";
+import DjiOsmoPocket4 from "../../../public/equipment-mock/dji-osmo-pocket-4-front.png";
 import Image from "next/image";
 
-export default function canonG7xMarkiiiCard() {
+export default function djiOsmoPocket4Card() {
   return (
     <div className={Styles.backgroundContainer}>
       <div className={Styles.container}>
         {/* =============== IMAGE-PANEL =============== */}
 
         <Image
-          src={CanonG7XMarkIII}
+          src={DjiOsmoPocket4}
           alt="Canon G7X Mark III"
-          className={Styles.CanonG7XMarkIII}
+          className={Styles.DjiOsmoPocket4}
           // placeholder="blur"
           layout="responsive"
         />
@@ -22,13 +22,13 @@ export default function canonG7xMarkiiiCard() {
         {/* =============== DETAILS-PANEL =============== */}
         <div className={Styles.details}>
           <div className={Styles.tags}></div>
+
           <div className={Styles.header}>
-            <h1 className={Styles.title}>G7X - Mark III</h1>
+            <h1 className={Styles.title}>OSMO Pocket 4</h1>
           </div>
           <div className={Styles.description}>
             <p className={Styles.textDescription}>
-              Its compact, premium design makes it perfect for Instagram,
-              TikTok, travel, lifestyle content, and timeless memories.
+              Ultra-portable 4K/240fps gimbal camera
             </p>
           </div>
           <div className={Styles.buttonContainer}>

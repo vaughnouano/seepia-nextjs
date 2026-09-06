@@ -1,0 +1,76 @@
+/* ===================================================
+   BLOCK
+   ===================================================*/
+.backgroundContainer {
+  background-color: red;
+  border-radius: var(--radius-lg);
+
+  width: 923px;
+  height: 384px;
+  padding: 12px;
+}
+
+/* ======================
+   Modifier 
+   ====================== */
+.container {
+  background-color: green;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+
+  position: relative;
+
+  display: flex;
+}
+
+.details {
+  background-color: orange;
+  border-radius: 20px;
+
+  height: 100%;
+  width: 320px;
+  z-index: 9999;
+  padding: 24px 32px;
+
+  position: absolute;
+  right: 0;
+}
+.title {
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -1;
+  margin-bottom: 8px;
+}
+.textDescription {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-light);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-primary-light);
+}
+.buttonContainer {
+  padding-top: 24px;
+}
+
+/* ====================== */
+
+/* ===================================================
+   ELEMENT (Unique per camera card)
+   ===================================================*/
+.CanonG7XMarkIII {
+  max-height: 471px;
+  max-width: 706px;
+
+  height: auto;
+  width: auto;
+  object-fit: contain;
+
+  position: absolute;
+  top: -50;
+  left: -130;
+}

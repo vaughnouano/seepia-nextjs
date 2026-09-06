@@ -1,20 +1,20 @@
-import Styles from "./canonG7xMarkiiiCard.module.css";
+import Styles from "./kodakFz55Pixpro.module.css";
 
-import TextIconButton from "../../components/ui/button/TextIconButton/TextIconButton";
+import TextIconButton from "../ui/button/TextIconButton/TextIconButton";
 
-import CanonG7XMarkIII from "../../../public/equipment-mock/canon_g7x_top.png";
+import KodakFz55Pixpro from "../../../public/equipment-mock/kodak-fz55-pixpro-front.png";
 import Image from "next/image";
 
-export default function canonG7xMarkiiiCard() {
+export default function KodakFz55PixproCard() {
   return (
     <div className={Styles.backgroundContainer}>
       <div className={Styles.container}>
         {/* =============== IMAGE-PANEL =============== */}
 
         <Image
-          src={CanonG7XMarkIII}
+          src={KodakFz55Pixpro}
           alt="Canon G7X Mark III"
-          className={Styles.CanonG7XMarkIII}
+          className={Styles.KodakFz55Pixpro}
           // placeholder="blur"
           layout="responsive"
         />
@@ -23,12 +23,12 @@ export default function canonG7xMarkiiiCard() {
         <div className={Styles.details}>
           <div className={Styles.tags}></div>
           <div className={Styles.header}>
-            <h1 className={Styles.title}>G7X - Mark III</h1>
+            <h1 className={Styles.title}>FZ55 - PIXPRO</h1>
           </div>
           <div className={Styles.description}>
             <p className={Styles.textDescription}>
-              Its compact, premium design makes it perfect for Instagram,
-              TikTok, travel, lifestyle content, and timeless memories.
+              One-touch HD video, 28mm wide-angle lens and a host of features
+              and shooting modes
             </p>
           </div>
           <div className={Styles.buttonContainer}>
