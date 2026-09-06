@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import styles from "../calendar/BookingPanel.module.css";
 
 import SelectorButton from "../../components/ui/button/SelectorButton/SelectorButton";
@@ -26,6 +29,8 @@ export default function BookingPanel({
   onSelectDurationTier,
   onBook,
 }) {
+  const router = useRouter();
+
   if (!camera) return null;
 
   const pricePerDay = pricing[camera.slug]?.[durationTier];
@@ -83,7 +88,11 @@ export default function BookingPanel({
               fill={true}
               onClick={onBook}
             />
-            <IconButton iconContent={<HomeIcon />} fill={false} />
+            <IconButton
+              iconContent={<HomeIcon />}
+              fill={false}
+              onClick={() => router.push("/")}
+            />
           </div>
         </div>
       </div>
