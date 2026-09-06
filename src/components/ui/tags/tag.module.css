@@ -1,17 +1,31 @@
 .tag {
-  display: inline-block;
-
-  padding-inline: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-
-  font-weight: 600;
-  line-height: 1.25em;
-  font-size: var(--font-size-sm);
+  display: flex;
+  width: fit-content;
+  padding: 4px 16px 4px 12px;
+  border-radius: 16px;
+  text-align: center;
 }
 
-.default {
-  background-color: var(--color-primary-light);
+.light {
   color: var(--color-primary);
-  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+
+  background-color: var(--color-border-primary-light);
+}
+
+.vibrant {
+  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+
+  background-color: #ef326a;
+}
+
+.dark {
+  color: var(--color-border-primary-light);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+
+  background-color: #1b1b1b;
 }
