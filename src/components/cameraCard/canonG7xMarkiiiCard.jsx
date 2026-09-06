@@ -1,11 +1,17 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Styles from "./canonG7xMarkiiiCard.module.css";
 
 import TextIconButton from "../../components/ui/button/TextIconButton/TextIconButton";
+import Tag from "../ui/tags/Tag";
 
 import CanonG7XMarkIII from "../../../public/equipment-mock/canon_g7x_top.png";
 import Image from "next/image";
 
 export default function canonG7xMarkiiiCard() {
+  const router = useRouter();
+
   return (
     <div className={Styles.backgroundContainer}>
       <div className={Styles.container}>
@@ -15,13 +21,14 @@ export default function canonG7xMarkiiiCard() {
           src={CanonG7XMarkIII}
           alt="Canon G7X Mark III"
           className={Styles.CanonG7XMarkIII}
-          // placeholder="blur"
           layout="responsive"
         />
 
         {/* =============== DETAILS-PANEL =============== */}
         <div className={Styles.details}>
-          <div className={Styles.tags}></div>
+          <div className={Styles.tags}>
+            <Tag colorShade="light">Personal Favorite</Tag>
+          </div>
           <div className={Styles.header}>
             <h1 className={Styles.title}>G7X - Mark III</h1>
           </div>
@@ -36,7 +43,8 @@ export default function canonG7xMarkiiiCard() {
               textContent={"BOOK"}
               buttonState={"active"}
               fill={false}
-            ></TextIconButton>
+              onClick={() => router.push("/calendar/g7x-mark-iii")}
+            />
           </div>
         </div>
       </div>
