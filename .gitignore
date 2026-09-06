@@ -14,7 +14,7 @@
 /coverage
 
 # Mock Data
-src/lib/
+# src/lib/
 
 # next.js
 /.next/
