@@ -154,6 +154,7 @@ button {
   --font-size-xl: 2rem; /* 32px */
   --font-size-xxl: 3rem; /* 48px */
 
+  --font-weight-extraLight: 200;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
