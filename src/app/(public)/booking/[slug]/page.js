@@ -2,7 +2,7 @@
 
 import Styles from "./page.module.css";
 import Image from "next/image";
-import { generateId } from "@/src/lib/generateId";
+import { generateId } from "../../../../lib/generateId";
 import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Input from "../../../../components/bookingForm/Input";
