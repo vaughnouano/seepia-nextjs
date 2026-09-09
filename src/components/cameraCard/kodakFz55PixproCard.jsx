@@ -26,18 +26,21 @@ export default function KodakFz55PixproCard() {
 
         {/* =============== DETAILS-PANEL =============== */}
         <div className={Styles.details}>
-          <div className={Styles.tags}>
-            <Tag colorShade="light">Classic</Tag>
+          <div>
+            <div className={Styles.tags}>
+              <Tag colorShade="light">Classic</Tag>
+            </div>
+            <div className={Styles.header}>
+              <h1 className={Styles.title}>FZ55 - PIXPRO</h1>
+            </div>
+            <div className={Styles.description}>
+              <p className={Styles.textDescription}>
+                One-touch HD video, 28mm wide-angle lens and a host of features
+                and shooting modes
+              </p>
+            </div>
           </div>
-          <div className={Styles.header}>
-            <h1 className={Styles.title}>FZ55 - PIXPRO</h1>
-          </div>
-          <div className={Styles.description}>
-            <p className={Styles.textDescription}>
-              One-touch HD video, 28mm wide-angle lens and a host of features
-              and shooting modes
-            </p>
-          </div>
+
           <div className={Styles.buttonContainer}>
             <TextIconButton
               textContent={"BOOK"}

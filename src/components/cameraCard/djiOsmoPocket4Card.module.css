@@ -33,6 +33,9 @@
   gap: 8px;
 }
 .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #ffffff;
   background: -webkit-linear-gradient(
     180deg,
@@ -102,4 +105,31 @@
   position: absolute;
   top: -90;
   right: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .backgroundContainer {
+    height: 450px;
+    min-width: 0;
+    width: 100%;
+  }
+  .DjiOsmoPocket4 {
+    max-height: 359px;
+    max-width: 359px;
+
+    height: auto;
+    width: auto;
+    object-fit: contain;
+
+    position: absolute;
+    top: -90;
+    right: 0;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .details {
+    height: 270px;
+    padding: 24px 24px;
+  }
 }

@@ -33,6 +33,10 @@
   gap: 8px;
 }
 .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background: #ffffff;
   background: -webkit-linear-gradient(
     180deg,
@@ -76,11 +80,18 @@
 .textDescription {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-extraLight);
-  font-style: italic;
+  /* font-style: italic; */
   color: var(--color-text);
   line-height: 1;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--color-primary-light);
+
+  /* Multi-line truncation */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2; /* Change this number to control how many lines show before '...' */
+  overflow: hidden;
 }
 .buttonContainer {
   padding-top: 24px;
@@ -97,9 +108,32 @@
 
   height: auto;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
 
   position: absolute;
   top: -50;
-  left: 40;
+  right: 50;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .KodakFz55Pixpro {
+    top: -40;
+    right: 0;
+    rotate: 16deg;
+  }
+  .backgroundContainer {
+    height: 450px;
+    width: 100%;
+    max-width: 400px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .textDescription {
+    font-size: var(--font-size-sm);
+  }
+  .details {
+    height: 270px;
+    padding: 24px 24px;
+  }
 }

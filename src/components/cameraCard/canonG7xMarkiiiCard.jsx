@@ -26,18 +26,21 @@ export default function canonG7xMarkiiiCard() {
 
         {/* =============== DETAILS-PANEL =============== */}
         <div className={Styles.details}>
-          <div className={Styles.tags}>
-            <Tag colorShade="light">Personal Favorite</Tag>
+          <div>
+            <div className={Styles.tags}>
+              <Tag colorShade="light">Personal Favorite</Tag>
+            </div>
+            <div className={Styles.header}>
+              <h1 className={Styles.title}>G7X - Mark III</h1>
+            </div>
+            <div className={Styles.description}>
+              <p className={Styles.textDescription}>
+                Its compact, premium design makes it perfect for Instagram,
+                TikTok, travel, lifestyle content, and timeless memories.
+              </p>
+            </div>
           </div>
-          <div className={Styles.header}>
-            <h1 className={Styles.title}>G7X - Mark III</h1>
-          </div>
-          <div className={Styles.description}>
-            <p className={Styles.textDescription}>
-              Its compact, premium design makes it perfect for Instagram,
-              TikTok, travel, lifestyle content, and timeless memories.
-            </p>
-          </div>
+
           <div className={Styles.buttonContainer}>
             <TextIconButton
               textContent={"BOOK"}

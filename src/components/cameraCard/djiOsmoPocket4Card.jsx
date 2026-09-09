@@ -26,19 +26,22 @@ export default function djiOsmoPocket4Card() {
 
         {/* =============== DETAILS-PANEL =============== */}
         <div className={Styles.details}>
-          <div className={Styles.tags}>
-            <Tag colorShade="vibrant">NEW</Tag>
-            <Tag colorShade="dark">FUll SET</Tag>
+          <div>
+            <div className={Styles.tags}>
+              <Tag colorShade="vibrant">NEW</Tag>
+              <Tag colorShade="dark">FUll SET</Tag>
+            </div>
+
+            <div className={Styles.header}>
+              <h1 className={Styles.title}>OSMO Pocket 4</h1>
+            </div>
+            <div className={Styles.description}>
+              <p className={Styles.textDescription}>
+                Ultra-portable 4K/240fps gimbal camera
+              </p>
+            </div>
           </div>
 
-          <div className={Styles.header}>
-            <h1 className={Styles.title}>OSMO Pocket 4</h1>
-          </div>
-          <div className={Styles.description}>
-            <p className={Styles.textDescription}>
-              Ultra-portable 4K/240fps gimbal camera
-            </p>
-          </div>
           <div className={Styles.buttonContainer}>
             <TextIconButton
               textContent={"BOOK"}
