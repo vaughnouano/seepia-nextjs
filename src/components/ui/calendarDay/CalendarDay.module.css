@@ -67,3 +67,9 @@
   box-shadow: 2px 2px 0px 3px var(--color-text-on-secondary);
   transform: translate(-3px, -3px);
 }
+
+@media (max-width: 767px) {
+  .day {
+    font-size: var(--font-size-md);
+  }
+}

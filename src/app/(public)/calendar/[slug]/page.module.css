@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  width: 100%;
+}
+
 .card {
   background-color: var(--color-bg-alt);
   display: flex;
@@ -10,10 +18,33 @@
   max-width: 1058px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100dvh;
-  width: 100%;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    min-height: 100dvh;
+    background: #fcf0f4;
+    background: linear-gradient(
+      319deg,
+      rgba(252, 240, 244, 1) 0%,
+      rgba(250, 218, 229, 1) 100%
+    );
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
+  .card {
+    flex-direction: column;
+    max-width: fit-content;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    background-color: var(--color-bg-alt);
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+  .card {
+    flex-direction: column-reverse;
+    max-width: 100%;
+    margin-inline: 24px;
+  }
 }
