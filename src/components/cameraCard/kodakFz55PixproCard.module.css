@@ -145,3 +145,21 @@
     padding: 24px 24px;
   }
 }
+
+@media (max-width: 767px) {
+  .KodakFz55Pixpro {
+    top: 0;
+    right: 0;
+    rotate: 16deg;
+  }
+  .KodakFz55Pixpro:hover {
+    transform: none;
+    top: 0;
+  }
+  .backgroundContainer {
+    width: 100%;
+  }
+  .details {
+    padding: 32px 24px;
+  }
+}

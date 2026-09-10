@@ -145,3 +145,24 @@
     padding: 24px 24px;
   }
 }
+@media (max-width: 767px) {
+  .CanonG7XMarkIII {
+    transform: scale(120%);
+    top: -120;
+    left: 0;
+  }
+  .CanonG7XMarkIII:hover {
+    transform: scale(120%);
+    top: -130;
+    left: 0;
+  }
+  .backgroundContainer {
+    height: 414px;
+  }
+  .details {
+    height: fit-content;
+    width: 100%;
+    bottom: 0;
+    padding: 24px;
+  }
+}
