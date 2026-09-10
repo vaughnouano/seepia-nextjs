@@ -144,6 +144,14 @@
   .backgroundContainer {
     min-width: 100%;
   }
+  .DjiOsmoPocket4 {
+    top: -70;
+    right: 0;
+  }
+  .DjiOsmoPocket4:hover {
+    transform: none;
+    top: -80;
+  }
   .details {
     padding: 32px 24px;
   }

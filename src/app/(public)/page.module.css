@@ -77,15 +77,18 @@
 
   .Main {
     padding-top: 32px;
+    gap: 24px;
   }
   .header {
     margin-bottom: 32px;
   }
   .cards {
     flex-direction: column;
+    gap: 48px;
   }
   .container {
     padding-top: 64px;
     width: 350px;
+    gap: 0;
   }
 }
