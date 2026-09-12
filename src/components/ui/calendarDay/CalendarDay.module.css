@@ -71,5 +71,25 @@
 @media (max-width: 767px) {
   .day {
     font-size: var(--font-size-md);
+
+    background-color: var(--color-primary-light);
+
+    border-radius: var(--radius-sm);
+  }
+
+  .unavailable {
+    cursor: not-allowed;
+    background-color: transparent;
+    border: 0px solid var(--color-border-primary-light);
+  }
+
+  .today {
+    color: var(--color-text-on-primary);
+    background-color: var(--color-primary);
+  }
+
+  .unavailable {
+    cursor: not-allowed;
+    background-color: transparent;
   }
 }

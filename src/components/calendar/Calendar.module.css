@@ -20,7 +20,7 @@
   border-radius: 8px;
   border: 2px solid var(--color-border-primary-light);
   padding: var(--space-md) var(--space-lg);
-  background-color: red;
+  /* background-color: red; */
 }
 
 .header {
@@ -64,18 +64,25 @@
 
 .grid_container {
   height: 100%;
-  background-color: green;
 }
 .grid {
   display: grid;
   /* height: 100%; */
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 @media (max-width: 767px) {
+  .month {
+    font-size: var(--font-size-lg);
+    letter-spacing: -1;
+    font-weight: var(--font-weight-bold);
+  }
+  .grid {
+    gap: 6px;
+  }
   .calendar {
-    padding: var(--space-sm);
+    padding: 12px;
   }
 }
