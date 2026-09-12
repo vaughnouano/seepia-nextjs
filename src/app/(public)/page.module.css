@@ -84,11 +84,12 @@
   }
   .cards {
     flex-direction: column;
-    gap: 48px;
+    gap: 64px;
+    margin-top: 12px;
   }
   .container {
     padding-top: 64px;
-    width: 350px;
+    width: 310px;
     gap: 0;
   }
 }

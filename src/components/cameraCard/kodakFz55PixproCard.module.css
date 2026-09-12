@@ -148,7 +148,7 @@
 
 @media (max-width: 767px) {
   .KodakFz55Pixpro {
-    top: 0;
+    top: -10;
     right: 0;
     rotate: 16deg;
   }
@@ -156,10 +156,18 @@
     transform: none;
     top: -10;
   }
+  .title {
+    font-size: 24px;
+  }
+  .textDescription {
+    font-size: 13px;
+  }
   .backgroundContainer {
     width: 100%;
+    height: 420px;
   }
   .details {
-    padding: 32px 24px;
+    height: 250px;
+    padding: 18px 18px;
   }
 }

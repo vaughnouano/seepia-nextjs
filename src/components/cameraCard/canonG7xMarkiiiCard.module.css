@@ -136,9 +136,6 @@
   .title {
     font-size: 32px;
   }
-  .textDescription {
-    font-size: var(--font-size-sm);
-  }
   .details {
     height: 100%;
     width: 260px;
@@ -148,21 +145,30 @@
 @media (max-width: 767px) {
   .CanonG7XMarkIII {
     transform: scale(120%);
-    top: -120;
+    top: -80;
     left: 0;
   }
   .CanonG7XMarkIII:hover {
     transform: scale(120%);
-    top: -130;
+    top: -80;
     left: 0;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .textDescription {
+    font-size: 13px;
+    font-weight: var(--font-weight-light);
+    font-style: normal;
   }
   .backgroundContainer {
     height: 414px;
+    padding: 8px;
   }
   .details {
     height: fit-content;
     width: 100%;
     bottom: 0;
-    padding: 24px;
+    padding: 18px 18px;
   }
 }

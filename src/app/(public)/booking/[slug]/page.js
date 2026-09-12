@@ -692,32 +692,33 @@ export default function BookingPage({ params }) {
               /> */}
             </div>
 
-            <TextIconButton
-              textContent={isSubmitting ? "Submitting..." : "Submit Form"}
-              buttonState={canSubmit && !isSubmitting ? "active" : "disabled"}
-              fill={true}
-              type="submit"
-              disabled={!canSubmit || isSubmitting}
-            />
-
-            {submitError && (
-              <p role="alert" className={Styles.warningText}>
-                {submitError}
-              </p>
-            )}
-
-            <label className={Styles.termsRow}>
-              <input
-                type="checkbox"
-                checked={termsAgreed}
-                readOnly
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleGoToTerms();
-                }}
+            <div className={Styles.buttonContainer}>
+              <TextIconButton
+                textContent={isSubmitting ? "Submitting..." : "Submit Form"}
+                buttonState={canSubmit && !isSubmitting ? "active" : "disabled"}
+                fill={true}
+                type="submit"
+                disabled={!canSubmit || isSubmitting}
               />
-              I have read and agree to Seepia Rentals' Terms &amp; Conditions.
-            </label>
+
+              {submitError && (
+                <p role="alert" className={Styles.warningText}>
+                  {submitError}
+                </p>
+              )}
+              <label className={Styles.termsRow}>
+                <input
+                  type="checkbox"
+                  checked={termsAgreed}
+                  readOnly
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleGoToTerms();
+                  }}
+                />
+                I have read and agree to Seepia Rentals' Terms &amp; Conditions.
+              </label>
+            </div>
           </div>
         </form>
       </div>
