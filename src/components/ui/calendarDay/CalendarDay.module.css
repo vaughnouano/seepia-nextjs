@@ -24,7 +24,7 @@
 .unavailable {
   cursor: not-allowed;
   background-color: transparent;
-  border: 2px solid var(--color-border-primary-light);
+  /* border: 2px solid var(--color-border-primary-light); */
 }
 
 .today {
@@ -35,37 +35,36 @@
 .selected {
   color: var(--color-text-on-secondary);
   background-color: var(--color-primary-light);
-  border: 2px solid var(--color-text-on-secondary);
+  /* border: 2px solid var(--color-text-on-secondary); */
 
-  box-shadow: 2px 2px 0px 3px var(--color-text-on-secondary);
-  transform: translate(-3px, -3px);
+  box-shadow: inset 0px 0px 0px 3px var(--color-text-on-secondary);
+  /* transform: translate(-3px, -3px); */
 }
 
 .hoverRequired {
-  border: 2px solid var(--color-text-on-secondary);
+  box-shadow: inset 0px 0px 0px 1px var(--color-text-on-secondary);
 }
 
 .hoverOptional {
-  border: 2px dashed var(--color-text-on-secondary);
-  opacity: 0.7;
+  /* border: 2px dashed var(--color-text-on-secondary); */
+  opacity: 0.5;
 }
 
 /* ==================
    Accessibility
    ==================*/
-/* .day:focus {
-  box-shadow: 2px 2px 0px 3px var(--color-text-on-secondary);
-  transform: translate(-3px, -3px);
-} */
+.day:focus {
+  box-shadow: inset 0px 0px 0px 1px var(--color-text-on-secondary);
+}
 
 .today:focus {
-  box-shadow: 2px 2px 0px 3px var(--color-text-on-secondary);
-  transform: translate(-3px, -3px);
+  box-shadow: inset 0px 0px 0px 3px var(--color-text-on-secondary);
+  /* transform: translate(-3px, -3px); */
 }
 
 .selected:focus {
-  box-shadow: 2px 2px 0px 3px var(--color-text-on-secondary);
-  transform: translate(-3px, -3px);
+  box-shadow: inset 0px 0px 0px 3px var(--color-text-on-secondary);
+  /* transform: translate(-3px, -3px); */
 }
 
 @media (max-width: 767px) {
